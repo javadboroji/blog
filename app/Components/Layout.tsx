@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import BreadCrumb from './BreadCrumb/BreadCrumb'
+import connectMongoDB from '../Libs/Mongodb'
 
 function Layout({ children }: { children: React.ReactNode }) {
     return (
