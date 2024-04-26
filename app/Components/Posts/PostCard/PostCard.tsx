@@ -3,13 +3,15 @@ import Image from 'next/image'
 import React from 'react'
 const PostCard: React.FC<blogPost>=({ key, src, date, author, title}) =>{
   return (
-    <div className='flex flex-col'>
-        <Image src={src} alt='image/card' width={200} height={200}/>
-        <div className='flex'>
-            <span >{date}</span>
-            <span className='px-2'>{author}</span>
+    <div className='flex h-full flex-col my-4'>
+        <div style={{height:'350px'}}>
+        <Image src={src} alt='image/card' width={350} height={350}  objectFit='cover' style={{borderRadius:'0.5rem',objectFit:'cover',height:'100%'}}/>
         </div>
-        <p>{title}</p>
+        <div className='flex'>
+            <span className=' pe-2 text-sm text-gray-400'>{date}</span>
+            <span className='px-2 text-sm text-gray-400'> نویسنده:{author}</span>
+        </div>
+        <p className='mt-4 font-bold'>{title}</p>
     </div>
   )
 }
