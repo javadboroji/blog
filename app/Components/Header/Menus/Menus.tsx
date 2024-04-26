@@ -18,6 +18,11 @@ function Menus() {
             title: 'تماس با ما',
             url: 'Contact'
         },
+        {
+            id:4,
+            title:"پنل ادمین",
+            url:'dashboard'
+        }
     ]
     return (
         <ul className='flex'>
