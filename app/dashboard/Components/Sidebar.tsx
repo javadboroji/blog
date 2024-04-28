@@ -11,7 +11,7 @@ function Sidebar() {
         {
             id: 1,
             title: 'پست ها ',
-            url: 'posts'
+            url: 'PostAddOrUpdate'
         },
         {
             id: 1,
@@ -31,12 +31,12 @@ function Sidebar() {
         
     ]
   return (
-    <div className='flex flex-col w-1/6 h-[100vh] bg-gradient'> 
+    <div className='flex flex-col h-[100vh] bg-gradient'> 
     <div className='min-h-44'></div>
         <ul className='p-0 my-8'>
-            {dashboardMenus?.map((item)=>(
-                <li key={item.id} className='p-4'>
-                    <Link className='text-white text-center ' href={`${item.url}`}>{item.title}</Link>
+            {dashboardMenus?.map((item,i)=>(
+                <li key={i} className='p-4'>
+                    <Link replace className='text-white text-center ' href={`${item.url}`}>{item.title}</Link>
                 </li>
             ))}
         </ul>
