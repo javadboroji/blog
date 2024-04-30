@@ -8,7 +8,7 @@ function DashBoardLayout({children}: { children: React.ReactNode }) {
           <Grid xs={12} lg={2} item>
           <Sidebar/>
           </Grid>
-          <Grid item  xs={12} lg={9}>
+          <Grid item  xs={12} lg={9} padding={2}>
             {children}
           </Grid>
     </Grid>
