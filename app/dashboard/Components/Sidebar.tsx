@@ -1,47 +1,54 @@
+import SiteName from '@/app/Components/Header/SitName/SiteName'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import logo from '@/public/blog-logo.png'
 
 function Sidebar() {
     const dashboardMenus = [
         {
             id: 1,
             title: ' داشبورد ',
-            url: 'dashboard'
+            url: '/dashboard'
         },
         {
             id: 1,
             title: 'پست ها ',
-            url: 'PostAddOrUpdate'
+            url: '/dashboard/PostAddOrUpdate'
         },
         {
             id: 1,
             title: 'کاربران ها ',
-            url: 'users'
+            url: '/dashboard/users'
         },
         {
             id: 1,
             title: 'کامنت  ها ',
-            url: 'comments'
+            url: '/dashboard/comments'
         },
         {
             id: 1,
             title: 'تنطیمات  ',
-            url: 'seting'
+            url: '/dashboard/seting'
         },
-        
+
     ]
-  return (
-    <div className='flex flex-col h-[100vh] bg-gradient'> 
-    <div className='min-h-44'></div>
-        <ul className='p-0 my-8'>
-            {dashboardMenus?.map((item,i)=>(
-                <li key={i} className='p-4'>
-                    <Link replace className='text-white text-center ' href={`${item.url}`}>{item.title}</Link>
-                </li>
-            ))}
-        </ul>
-    </div>
-  )
+    return (
+        <div className='flex flex-col w-[80%] h-[100vh] ' style={{ background: '#14213d' }}>
+            <div className='py-8 flex justify-center'>
+               <Link href={'/'}>
+               <Image alt='logo' src={logo} width={150} height={40} />
+               </Link>
+            </div>
+            <ul className='p-0 my-8'>
+                {dashboardMenus?.map((item, i) => (
+                    <li key={i} className='p-4'>
+                        <Link replace className='text-white text-center ' href={`${item.url}`}>{item.title}</Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
 }
 
 export default Sidebar

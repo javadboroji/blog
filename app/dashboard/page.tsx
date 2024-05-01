@@ -1,11 +1,12 @@
 import React from 'react'
 import Sidebar from './Components/Sidebar'
+import DashBoardLayout from './DashBoardLayout'
 
-const page=()=> {
+const page = () => {
   return (
-    <div className='flex'>
-    
-    </div>
+    <DashBoardLayout>
+      <h1> داشبورد</h1>
+    </DashBoardLayout>
   )
 }
 
