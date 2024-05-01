@@ -27,6 +27,14 @@ body {
   background-image: linear-gradient(55deg, #0250c5 0%, #d43f8d 100%);
   min-height: calc(270px + 70px);
 }
+footer{
+  background: url('../public/footerbg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 4.5rem;
+  padding: 2rem 0;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

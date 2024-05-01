@@ -1,7 +1,22 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Menus() {
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+      };
+  
+      window.addEventListener('scroll', handleScroll, { passive: true });
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, [scrollPosition]);
     const menus = [
         {
             id: 1,
@@ -28,7 +43,7 @@ function Menus() {
         <ul className='flex'>
             {menus?.map((menu) => (
                 <li key={menu.id} className='px-4'>
-                    <Link href={`/${menu.url}`} className='text-white text-lg' >{menu.title} </Link>
+                    <Link href={`/${menu.url}`} className= {` ${scrollPosition > 390?'text-black':'text-white'} text-lg`} >{menu.title} </Link>
                 </li>
             ))}
         </ul>
