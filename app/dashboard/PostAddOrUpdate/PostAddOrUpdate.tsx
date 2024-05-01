@@ -3,6 +3,7 @@ import { Button, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { AddNewPost } from '@/app/AllApi'
+import MuiLayOut from '@/app/MuiLayOut'
 function PostAddOrUpdate() {
     const submitPosts = (form: any) => {
         AddNewPost(form);
@@ -20,7 +21,7 @@ function PostAddOrUpdate() {
         setForm({ ...form, [name]: value });
     }
     return (
-        <>
+        <MuiLayOut>
             <Grid component={'div'} container spacing={2} sx={{ marginTop: 5 }} >
                 <Grid item xs={12} lg={12}>
                     <TextField sx={{ width: '100%' }} id="outlined-basic" name='title' label="عنوان" variant="outlined" value={form.title} onChange={onchange} />
@@ -36,7 +37,7 @@ function PostAddOrUpdate() {
                 </Grid>
             </Grid>
             <Button type='submit' onClick={() => submitPosts({...form})} variant="contained" sx={{ margin: 2, padding: '0.5rem 3rem' }}> ثبت</Button>
-        </>
+        </MuiLayOut>
     )
 }
 

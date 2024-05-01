@@ -1,9 +1,13 @@
 import Image from "next/image";
+import Layout from "./Components/Layout";
+import Posts from "./Components/Posts/PostCard/Posts";
 
 export default function Home() {
   return (
-    <main className="">
-      
+    <main >
+      <Layout>
+        <Posts />
+      </Layout>
     </main>
   );
 }
