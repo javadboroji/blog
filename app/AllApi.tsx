@@ -3,7 +3,7 @@ import axios from 'axios'
 const AddNewPost=(body:any)=>{
     axios
     .post(
-        "http://localhost:3000/api/AddPost",
+        `${process.env.NEXT_PUBLIC_SIT_URL}api/AddPost`,
         {
             ...body
         },

@@ -18,7 +18,7 @@ const Posts = () => {
 
     const [data, setData] = useState<blogPost[]>([])
     useEffect(() => {
-        const apiUrl = 'http://localhost:3000/api/getPost';
+        const apiUrl = `${process.env.NEXT_PUBLIC_SIT_URL}api/getPost`;
         try {
             const response = fetch(apiUrl)
                 .then(res => {
