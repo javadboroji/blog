@@ -7,9 +7,10 @@ import MuiLayOut from '@/app/MuiLayOut';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ModalComponent from '@/app/Components/ModalComponent/ModalComponent'
+import PostsGrid from './PostsGrid'
 function PostAddOrUpdate() {
     const submitPosts = (form: any) => {
-        AddNewPost(form);
+        AddNewPost(form,setOpenModal);
 
     }
     const [form, setForm] = useState({
@@ -49,7 +50,7 @@ function PostAddOrUpdate() {
                 </Grid>
                 <Button type='submit' onClick={() => submitPosts({ ...form })} variant="contained" sx={{ margin: 2, padding: '0.5rem 3rem', backgroundColor: '#0a9396' }}> ثبت</Button>
             </ModalComponent>
-
+            <PostsGrid/>
             <ToastContainer />
         </MuiLayOut>
     )
