@@ -14,10 +14,13 @@ function BreadCrumb() {
     const [pathsName, setpathsName] = useState<breadcrumbPath[]>([])
     const splitPathName = () => {
         const result = paths.split('/').filter(path => path);
-        const breadcrumbPaths: breadcrumbPath[] = result.map((path) =>
-            path === 'home'
-                ? ({ href: 'home', title: 'خانه' })
-                : ({ href: '', title: '' })
+        const pathRes = [...result, '/']
+        console.log(pathRes);
+
+        const breadcrumbPaths: breadcrumbPath[] = pathRes.map((path) => 
+        path === '/' ? ({ href: '/', title: 'خانه' }) :
+        path === 'post' ? ({ href: '/post', title: 'پست' }) :
+          ({ href: '*', title: '' })
         );
 
         setpathsName(breadcrumbPaths);
@@ -36,9 +39,11 @@ function BreadCrumb() {
                 <div className='mt-12 flex flex-col justify-center  h-full py-8'>
                     <h1 className='text-4xl font-bold text-white'> وبلاگ</h1>
                     <div className='flex mt-4 '>
-                        {pathsName?.map((path, i) => (
-                            <Link href={`${path.href}`} key={i} className='text-white font-medium px-4'> {path.title}</Link>
-                        ))}
+                        {pathsName?.map((path, i) => {
+                            return (
+                                <Link href={`${path.href}`} key={i} className='text-white font-medium px-4'> {path.title}</Link>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
