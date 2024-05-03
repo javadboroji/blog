@@ -1,9 +1,11 @@
 export  interface blogPost {
+    _id?:string,
     key?:number,
     src:string,
     date:string,
     author:string,
-    title:string
+    title:string,
+    description?:string
 }
 export interface GetPostsResponse{
     

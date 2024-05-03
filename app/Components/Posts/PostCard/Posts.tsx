@@ -37,7 +37,7 @@ const Posts = () => {
             <Grid container display={'flex'} flex={1} spacing={2}>
                 {data?.map((post, i) =>
                     <Grid item xs={12} lg={3} key={i}>
-                        <PostCard src={post.src} date={post.date} author={post.author} title={post.title} />
+                        <PostCard src={post.src} date={post.date} author={post.author} title={post.title}  _id={post._id}/>
                     </Grid>)}
             </Grid>
     )
