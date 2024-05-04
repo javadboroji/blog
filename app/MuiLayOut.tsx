@@ -5,28 +5,34 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { prefixer } from 'stylis';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali';
 
 const theme = (outerTheme: Theme) =>
   createTheme({
     direction: 'rtl',
     typography: {
-        fontFamily: 'iranSans',
-      },
+      fontFamily: 'iranSans',
+    },
   });
 
 const cacheRtl = createCache({
   key: 'muirtl',
   stylisPlugins: [prefixer, rtlPlugin],
 });
-function MuiLayOut({children}:{children: React.ReactNode}) {
+function MuiLayOut({ children }: { children: React.ReactNode }) {
   return (
     <CacheProvider value={cacheRtl}>
-    <ThemeProvider theme={theme}>
-        <div>
-            {children}
+      <ThemeProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>   
+      
+      <div>
+          {children}
         </div>
-  </ThemeProvider>
-</CacheProvider>
+       </LocalizationProvider>
+      
+      </ThemeProvider>
+    </CacheProvider>
   )
 }
 
