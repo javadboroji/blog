@@ -5,7 +5,7 @@ const AddNewPost = (body: any, setOpenModal: any) => {
     axios
         .post(
             `
-        http://localhost:3000/api/AddPost`,
+       ${process.env.NEXT_PUBLIC_SIT_URL}/api/AddPost`,
             {
                 ...body
             },
@@ -44,7 +44,7 @@ const AddNewPost = (body: any, setOpenModal: any) => {
 const getAllPosts = async () => {
     try {
         const res = await axios.get(
-            `http://localhost:3000/api/getPost`,
+            `${process.env.NEXT_PUBLIC_SIT_URL}/api/getPost`,
             { headers: { 'Content-Type': 'application/json' } }
         );
         return res.data;
@@ -56,7 +56,7 @@ const getAllPosts = async () => {
 
 const singlePost = async (id: string) => {
     try {
-        const result = await axios.post(`http://localhost:3000/api/getSinglePost`, id, { headers: { 'Content-Type': 'application/json' } });
+        const result = await axios.post(`${process.env.NEXT_PUBLIC_SIT_URL}/api/getSinglePost`, id, { headers: { 'Content-Type': 'application/json' } });
         return result.data.post
     } catch (error) {
         console.log(error);

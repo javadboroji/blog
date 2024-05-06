@@ -9,6 +9,8 @@ export async function GET(res:NextApiResponse,req:NextRequest){
     try{
         await connectMongoDB();
         const postsData=await Posts.find();
+        console.log();
+        
         return NextResponse.json({
             code:200,
             message:'',

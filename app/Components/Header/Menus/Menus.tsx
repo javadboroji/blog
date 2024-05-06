@@ -37,12 +37,17 @@ function Menus() {
             id:4,
             title:"پنل ادمین",
             url:'dashboard'
+        },
+        {
+            id:4,
+            title:" ورود/ثبت نام",
+            url:'Login'
         }
     ]
     return (
         <ul className='flex'>
-            {menus?.map((menu) => (
-                <li key={menu.id} className='px-4'>
+            {menus?.map((menu,i) => (
+                <li key={i} className='px-4'>
                     <Link href={`/${menu.url}`} className= {` ${scrollPosition > 390?'text-black':'text-white'} text-lg`} >{menu.title} </Link>
                 </li>
             ))}
