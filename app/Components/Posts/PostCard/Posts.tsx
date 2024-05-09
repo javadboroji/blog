@@ -3,6 +3,7 @@ import { blogPost } from '@/app/Types';
 import React, { useEffect, useState } from 'react'
 import PostCard from './PostCard';
 import { Grid } from '@mui/material';
+import { getAllPosts } from '@/app/AllApi';
 
 const GetAllPosts = async () => {
     const apiUrl = 'http://localhost:3000/api/getPost';
@@ -18,19 +19,15 @@ const Posts = () => {
 
     const [data, setData] = useState<blogPost[]>([])
     useEffect(() => {
-        const apiUrl = `api/getPost`;
-        try {
-            const response = fetch(apiUrl)
-                .then(res => {
-                    return res.json();
-
-                }
-                )
-                .then((data) => setData(data.posts)
-                )
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+        const fetchData = async () => {
+            try {
+                const data = await getAllPosts();
+                setData(data.posts)
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        };
+        fetchData();
     }, [])
 
     return (
