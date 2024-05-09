@@ -4,8 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddNewPost = (body: any, setOpenModal: any) => {
     axios
         .post(
-            `
-       ${process.env.NEXT_PUBLIC_SIT_URL}/api/AddPost`,
+            `http://localhost:3000/api/AddPost`,
             {
                 ...body
             },
@@ -43,9 +42,7 @@ const AddNewPost = (body: any, setOpenModal: any) => {
 }
 const getAllPosts = async () => {
     try {
-        const res = await axios.get(
-            `${process.env.NEXT_PUBLIC_SIT_URL}/api/getPost`,
-            { headers: { 'Content-Type': 'application/json' } }
+        const res = await axios.get(`http://localhost:3000/api/getPost`
         );
         return res.data;
     } catch (error) {
@@ -56,7 +53,7 @@ const getAllPosts = async () => {
 
 const singlePost = async (id: string) => {
     try {
-        const result = await axios.post(`${process.env.NEXT_PUBLIC_SIT_URL}/api/getSinglePost`, id, { headers: { 'Content-Type': 'application/json' } });
+        const result = await axios.post(`http://localhost:3000/api/getSinglePost`, id, { headers: { 'Content-Type': 'application/json' } });
         return result.data.post
     } catch (error) {
         console.log(error);

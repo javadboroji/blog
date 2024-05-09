@@ -3,14 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Posts from "@/app/Moudles/Posts";
 
-export async function GET(res:NextApiResponse,req:NextRequest){
+export  async function GET(){
     
     
     try{
         await connectMongoDB();
         const postsData=await Posts.find();
-        console.log();
-        
         return NextResponse.json({
             code:200,
             message:'',
