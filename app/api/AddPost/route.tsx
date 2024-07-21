@@ -8,9 +8,7 @@ export async function POST(req:NextRequest){
     await connectMongoDB();
     try{
         let newPost=null
-        if(data){
-            console.log(data.form);
-            
+        if(data){            
             newPost= await   Posts.create({
                 src:'',
                 date:data.date,
