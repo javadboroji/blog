@@ -14,3 +14,12 @@ export interface GetPostsResponse{
         posts: [blogPost]
     
 }
+export interface UserLogin{
+    isLogin:boolean,
+    userName:string,
+    role:string
+}
+export interface LoginApi{
+    userName:string,
+    password:string
+}

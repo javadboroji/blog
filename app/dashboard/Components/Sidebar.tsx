@@ -12,22 +12,27 @@ function Sidebar() {
             url: '/dashboard'
         },
         {
-            id: 1,
+            id: 2,
+            title: ' کانبان ',
+            url: '/dashboard/kanban'
+        },
+        {
+            id: 3,
             title: 'پست ها ',
             url: '/dashboard/PostAddOrUpdate'
         },
         {
-            id: 1,
+            id: 4,
             title: 'کاربران ها ',
             url: '/dashboard/users'
         },
         {
-            id: 1,
+            id: 5,
             title: 'کامنت  ها ',
             url: '/dashboard/comments'
         },
         {
-            id: 1,
+            id: 6,
             title: 'تنطیمات  ',
             url: '/dashboard/seting'
         },

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/modifiers": "^7.0.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.13",
@@ -22,19 +24,23 @@
     "axios": "^1.6.8",
     "bson": "^6.7.0",
     "cloudinary": "^2.2.0",
+    "clsx": "^2.1.1",
     "date-fns-jalali": "^2.13.0-0",
     "dayjs": "^1.11.11",
     "mongoose": "^8.3.2",
     "next": "14.2.2",
     "next-auth": "^4.24.7",
     "react": "^18",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
     "react-icons": "^5.1.0",
     "react-toastify": "^10.0.5",
     "styled-components": "^6.1.8",
     "stylis-plugin-rtl": "^2.1.1",
-    "uuid": "^9.0.1"
+    "tailwind-merge": "^2.4.0",
+    "uuid": "^9.0.1",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/mongoose": "^5.11.97",

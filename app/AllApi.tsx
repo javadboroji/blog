@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { LoginApi, UserLogin } from './Types';
+import { useIsLogin } from './sotre/publicStore';
 const AddNewPost = (body: any, setOpenModal: any) => {
     axios
         .post(
@@ -60,4 +62,24 @@ const singlePost = async (id: string) => {
         throw error;
     }
 }
-export { AddNewPost, getAllPosts, singlePost }
+
+const loginUser=async(body:LoginApi)=>{
+    try {
+        const result = await axios.post(`http://localhost:3000/api/login`, body, { headers: { 'Content-Type': 'application/json' } });
+        return result.data
+    } catch (error) {
+        toast.error('رمز عیور یا پسورد اشتباه می باشد', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            //transition: Bounce,
+        });
+        throw error;
+    }  
+}
+export { AddNewPost, getAllPosts, singlePost ,loginUser}
