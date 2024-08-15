@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={inter.className}>{children}</body>
+      <body dir="rtl" className={inter.className}>{children}</body>
     </html>
   );
 }
