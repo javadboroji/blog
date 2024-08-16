@@ -5,7 +5,8 @@ export  interface blogPost {
     date:string,
     author:string,
     title:string,
-    description?:string
+    description?:string,
+    category?:string
 }
 export interface GetPostsResponse{
     
@@ -22,4 +23,8 @@ export interface UserLogin{
 export interface LoginApi{
     userName:string,
     password:string
+}
+export interface newPostStateProps{
+    newPost:blogPost,
+    setNewPost: React.Dispatch<React.SetStateAction<blogPost>>
 }

@@ -3,10 +3,10 @@ import { IconButton, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { FaUpload } from "react-icons/fa";
 import Image from "next/image";
+import { newPostStateProps } from "@/app/Types";
 
-function UploadImage() {
+const UploadImage: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
   /*================== UploadImage =================*/
-  const [ImageSrc, setImageSrc] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const uploadImage = (e: any) => {
     const file = e.target.files[0];
@@ -15,17 +15,16 @@ function UploadImage() {
       const objectUrl = URL.createObjectURL(file);
       console.log(file);
 
-      setImageSrc(objectUrl);
+      setNewPost((prev) => ({ ...prev, src: objectUrl }));
     }
   };
-  useEffect(() => {}, [ImageSrc]);
 
   return (
     <div className="flex justify-center items-center my-8 overflow-hidden h-[25rem] border-2 border-blue-300 rounded-lg">
-      {ImageSrc ? (
+      {newPost.src ? (
         <Image
-          src={ImageSrc}
-          alt={ImageSrc}
+          src={newPost.src}
+          alt={newPost.src}
           width={500}
           height={500}
           objectFit="contain"
@@ -58,6 +57,6 @@ function UploadImage() {
       )}
     </div>
   );
-}
+};
 
 export default UploadImage;

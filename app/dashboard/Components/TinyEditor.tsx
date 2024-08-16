@@ -4,19 +4,22 @@ import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box, TextField } from "@mui/material";
+import { newPostStateProps } from "@/app/Types";
 
-function TinyEditor() {
-  const editorRef = useRef(null);
-  useEffect(() => {
-    const content = editorRef.current;
-    console.log(content);
-  }, [editorRef]);
+const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
+  const editorRef = useRef("");
+
+  const changeContentValue = (content: string) => {
+    setNewPost((prev) => ({ ...prev, description: content }));
+  };
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
+
   if (loading) {
     return (
       <Box
@@ -28,14 +31,23 @@ function TinyEditor() {
   } else {
     return (
       <div>
-        <Box sx={{ display: "flex", width: "100%", marginBottom:"1rem"}}>
-          <TextField id="title" label="عنوان" variant="outlined" sx={{width:"100%"}} />
+        <Box sx={{ display: "flex", width: "100%", marginBottom: "1rem" }}>
+          <TextField
+            id="title"
+            label="عنوان"
+            value={newPost.title}
+            onChange={(e) =>
+              setNewPost((prev) => ({ ...prev, title: e.target.value }))
+            }
+            variant="outlined"
+            sx={{ width: "100%" }}
+          />
         </Box>
 
         <Editor
           apiKey="wsntphmr8e2ki1sfhg8mr9pojwmpng64egw5t57af1uk4jdc"
           onInit={(_evt, editor) => (editorRef.current = editor)}
-          onChange={(event) => console.log(event.target.getContent())}
+          onChange={(event) => changeContentValue(event.target.getContent())}
           init={{
             height: 500,
             language: "fa",
@@ -53,6 +65,6 @@ function TinyEditor() {
       </div>
     );
   }
-}
+};
 
 export default TinyEditor;

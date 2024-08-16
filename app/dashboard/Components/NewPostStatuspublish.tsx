@@ -4,8 +4,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-function NewPostStatuspublish() {
+import { newPostStateProps } from "@/app/Types";
+const  NewPostStatuspublish:React.FC<newPostStateProps>=()=> {
   return (
     <div className="bg-gray-100 rounded-xl p-2">
       <span className="text-xl "> وضعیت انتشار</span>
