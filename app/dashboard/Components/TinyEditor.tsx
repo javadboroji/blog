@@ -18,7 +18,7 @@ const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
-  }, []);
+  }, [newPost]);
 
   if (loading) {
     return (
@@ -35,7 +35,7 @@ const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
           <TextField
             id="title"
             label="عنوان"
-            value={newPost.title}
+            value={newPost?.title}
             onChange={(e) =>
               setNewPost((prev) => ({ ...prev, title: e.target.value }))
             }
@@ -47,6 +47,7 @@ const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
         <Editor
           apiKey="wsntphmr8e2ki1sfhg8mr9pojwmpng64egw5t57af1uk4jdc"
           onInit={(_evt, editor) => (editorRef.current = editor)}
+          value={newPost?.description}
           onChange={(event) => changeContentValue(event.target.getContent())}
           init={{
             height: 500,

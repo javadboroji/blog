@@ -11,8 +11,8 @@ import NewPostForm from "./NewPostForm";
 function page() {
   return (
     <DashBoardLayout>
-      <DashboardHeader />
-      <NewPostForm/>
+      <DashboardHeader  title="پست جدید"/>
+      <NewPostForm type="add"/>
     </DashBoardLayout>
   );
 }

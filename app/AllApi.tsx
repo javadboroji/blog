@@ -48,11 +48,12 @@ const getAllPosts = async () => {
   }
 };
 
-const singlePost = async (id: string) => {
+const singlePost = async (id: string, type?: string) => {
+  const body = type === "edit" ? { id: id } : id;
   try {
     const result = await axios.post(
       `http://localhost:3000/api/getSinglePost`,
-      id,
+      body,
       { headers: { "Content-Type": "application/json" } }
     );
     return result.data.post;

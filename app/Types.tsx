@@ -28,5 +28,6 @@ export interface LoginApi{
 }
 export interface newPostStateProps{
     newPost:blogPost,
-    setNewPost: React.Dispatch<React.SetStateAction<blogPost>>
+    setNewPost: React.Dispatch<React.SetStateAction<blogPost>>,
+    type?:string
 }
