@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import Layout from "../Components/Layout";
 import { useForm, SubmitHandler } from "react-hook-form";
 import CircularProgress from "@mui/material/CircularProgress";
-import { fetchPost } from "../utils/FetchData";
 import { ToastContainer } from "react-toastify";
 import { loginUser } from "../AllApi";
 import { useIsLogin } from "../sotre/publicStore";
+import { useRouter } from "next/navigation";
 
 interface IFormInput {
   userName: string;
@@ -27,6 +27,7 @@ function Login() {
 
   /*================================ Form Config ==============================*/
   const { setLoginUserInfo } = useIsLogin();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,13 +35,15 @@ function Login() {
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const result = await loginUser(data);
-    if (result.login)
-      setLoginUserInfo({
-        isLogin: true,
-        userName: result.userName,
-        role: "admin",
-      });
-      
+    if (result.login) setLoading(true); //spiner active
+    //set user info in zus
+    setLoginUserInfo({
+      isLogin: true,
+      userName: result.userName,
+      role: "admin",
+    });
+    //redirect to dashboard page
+    router.push("/dashboard");
   };
 
   useEffect(() => {}, [registerForm]);

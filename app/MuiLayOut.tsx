@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { createTheme, ThemeProvider, Theme } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
