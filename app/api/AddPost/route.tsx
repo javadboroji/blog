@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
   try {
     let newPost = null;
     if (data) {
-      console.log(data,"***********");
       
       const imageFile = await data.get("src");
       

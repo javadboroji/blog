@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FaUpload } from "react-icons/fa";
 import Image from "next/image";
 import { newPostStateProps } from "@/app/Types";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 const UploadImage: React.FC<newPostStateProps> = ({
   setNewPost,
   newPost,
@@ -24,19 +24,27 @@ const UploadImage: React.FC<newPostStateProps> = ({
     }
   };
   useEffect(() => {
-    setImagePreview(newPost.src);
-  }, [newPost]);
+    if (type === "edit") {
+      setImagePreview(newPost.src);
+     /// setNewPost((prev) => ({ ...prev, src: null }));
+    }
+  }, [type]);
 
   return (
-    <div className="flex justify-center items-center my-8 overflow-hidden h-[25rem] border-2 border-blue-300 rounded-lg">
+    <div className="flex justify-center relative items-center my-8 overflow-hidden h-[25rem] border-2 border-blue-300 rounded-lg">
       {imagePreview ? (
-        <Image
-          src={type === "edit" ? `/file/${imagePreview}` : imagePreview}
-          alt={imagePreview}
-          width={500}
-          height={500}
-          className="object-contain"
-        />
+        <>
+          <Image
+            src={type === "edit" ? `/file/${imagePreview}` : imagePreview}
+            alt={imagePreview}
+            width={500}
+            height={500}
+            className="object-contain"
+          />
+          <IconButton className="absolute z-10 top-1/2 let-1/2  -translate-x-1/2 -translate-y-1/2">
+            <DeleteIcon />
+          </IconButton>
+        </>
       ) : (
         <IconButton
           sx={{

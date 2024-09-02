@@ -6,7 +6,7 @@ import NewPostCategory from "../../Components/NewPostCategory";
 import NewPostStatuspublish from "../../Components/NewPostStatuspublish";
 import UploadImage from "../../Components/UploadImage";
 import { blogPost } from "@/app/Types";
-import { AddNewPost, singlePost } from "@/app/AllApi";
+import { AddNewPost, singlePost, updatePost } from "@/app/AllApi";
 import { usePathname } from "next/navigation";
 
 type NewPostFormProps = {
@@ -30,13 +30,19 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ type }) => {
       formData.append("description", newPost.description as string);
       formData.append("author", newPost.author);
       formData.append("src", newPost.src);
-
-      AddNewPost(formData);
+      if (type === "edit") {
+        const pathNameList = path.split("/");
+        const postId = pathNameList[pathNameList.length - 1];
+        formData.append("_id", postId);
+        updatePost(formData);
+      } else {
+        AddNewPost(formData);
+      }
     }
   };
   const fetchSigleData = async (id: string) => {
     const result = await singlePost(id, "edit");
-  await  setNewPost({
+    await setNewPost({
       author: result.author,
       src: result.src,
       title: result.title,
@@ -91,7 +97,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ type }) => {
 
         <NewPostStatuspublish newPost={newPost} setNewPost={setNewPost} />
 
-        <UploadImage newPost={newPost} setNewPost={setNewPost} type={type}/>
+        <UploadImage newPost={newPost} setNewPost={setNewPost} type={type} />
       </Grid>
     </Grid>
   );

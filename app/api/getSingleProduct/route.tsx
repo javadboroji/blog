@@ -18,9 +18,6 @@ export  async function GET(request:NextRequest ,response:NextResponse){
         
         const objectId = new ObjectId(id);
         const productsData=await Products.findById(id);
-        console.log(objectId,'***objectId***');
-        
-        console.log(productsData,'*productsData*');
         
         return NextResponse.json({
             code:200,

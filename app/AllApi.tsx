@@ -38,6 +38,41 @@ const AddNewPost = async (body: FormData) => {
     });
   }
 };
+const updatePost = async (body: FormData) => {
+  try {
+    await axios
+      .put(`http://localhost:3000/api/updatePost`, body, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        toast.success(" با موفقیت ثبت شد!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          //transition: Bounce,
+        });
+      });
+  } catch (error) {
+    toast.error(" خطایی رخ داده است !", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      //transition: Bounce,
+    });
+  }
+};
 const getAllPosts = async () => {
   try {
     const res = await axios.get(`http://localhost:3000/api/getPost`);
@@ -84,4 +119,4 @@ const loginUser = async (body: LoginApi) => {
     throw error;
   }
 };
-export { AddNewPost, getAllPosts, singlePost, loginUser };
+export { AddNewPost,updatePost, getAllPosts, singlePost, loginUser };

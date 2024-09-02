@@ -1,5 +1,7 @@
 "use client";
+import { getCookiesValues } from "@/app/Libs/getCookies";
 import { useIsLogin } from "@/app/sotre/publicStore";
+import { UserLogin } from "@/app/Types";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -8,6 +10,24 @@ function Menus() {
   //check if user is login show dashboard link in menu
   const login = useIsLogin((state) => state.login);
 
+  /*================== get user info from cookie =================*/
+  
+  
+  const [cookieLogin, setcookieLogin] = useState<undefined | UserLogin>(
+    undefined
+  );
+  const getUserInfoFromCookies = async () => {
+    const res = await getCookiesValues("userLogin");
+    if (res?.value) {
+      setcookieLogin(JSON.parse(res.value));
+    }
+  };
+
+
+
+  /*================== re-render =================*/
+  
+  
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset;
@@ -20,7 +40,11 @@ function Menus() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrollPosition]);
-  const menus = login.isLogin
+  useEffect(() => {
+    getUserInfoFromCookies();
+  }, [])
+  
+  const menus = cookieLogin?.isLogin
     ? [
         {
           id: 1,
@@ -40,12 +64,12 @@ function Menus() {
         {
           id: 4,
           title: "پنل ادمین",
-          url: "dashboard", 
+          url: "dashboard",
         },
         {
           id: 4,
           title: "خروج از حساب کاربری",
-          url: "/",
+          url: "logout",
         },
       ]
     : [

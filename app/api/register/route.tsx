@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
                 password:person.password,
                 email:person.email
             })
-            console.log(newUser,'***');
         }
         return NextResponse.json({ code: 200, message: "user login successfully" ,user:newUser });
     }

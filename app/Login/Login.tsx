@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { loginUser } from "../AllApi";
 import { useIsLogin } from "../sotre/publicStore";
 import { useRouter } from "next/navigation";
+import { featchUserCookie } from "../actions";
 
 interface IFormInput {
   userName: string;
@@ -26,6 +27,22 @@ function Login() {
   };
 
   /*================================ Form Config ==============================*/
+  const loginFn = async (data: any) => {
+    const result = await loginUser(data);
+    if (result.login) setLoading(true); //spiner active
+    //set user info in zus
+    const userInfoObj = {
+      isLogin: true,
+      userName: result.userName,
+      role: "admin",
+    };
+    await setLoginUserInfo(userInfoObj);
+    //set user data  in cookie 
+    await featchUserCookie(userInfoObj);
+    //redirect to dashboard page
+    router.push("/dashboard");
+  };
+
   const { setLoginUserInfo } = useIsLogin();
   const router = useRouter();
   const {
@@ -33,18 +50,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const result = await loginUser(data);
-    if (result.login) setLoading(true); //spiner active
-    //set user info in zus
-    setLoginUserInfo({
-      isLogin: true,
-      userName: result.userName,
-      role: "admin",
-    });
-    //redirect to dashboard page
-    router.push("/dashboard");
-  };
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => loginFn(data);
 
   useEffect(() => {}, [registerForm]);
 
