@@ -2,7 +2,6 @@ import { blogPost } from "@/app/Types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import img1 from "../../../../file/20944201.jpg";
 const PostCard: React.FC<blogPost> = ({
   key,
   src,

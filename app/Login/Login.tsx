@@ -55,15 +55,15 @@ function Login() {
   useEffect(() => {}, [registerForm]);
 
   return (
-    <Layout>
+    <Layout disableBreadcrumb={true}>
       {loading ? (
-        <div className="flex py-12 max-h-14 w-full justify-center">
+        <div className="flex mt-9 py-12 max-h-14 w-full justify-center">
           <CircularProgress />
         </div>
       ) : !registerForm ? (
         /*================================ Login Form ==============================*/
 
-        <div className="w-1/2 flex flex-col shadow-lg justify-center mx-auto my-8">
+        <div className="w-1/2  flex flex-col shadow-lg justify-center mx-auto mt-32">
           <span className="text-xl text-center block py-8 w-full mx-auto">
             {" "}
             ورود
@@ -123,7 +123,7 @@ function Login() {
       ) : (
         /*================================ Register Form ==============================*/
 
-        <div className="w-1/2 flex flex-col shadow-lg justify-center mx-auto my-8">
+        <div className="w-1/2 flex flex-col shadow-lg justify-center mx-auto mt-32">
           <span className="text-xl text-center block py-8 w-full mx-auto">
             {" "}
             ثبت نام

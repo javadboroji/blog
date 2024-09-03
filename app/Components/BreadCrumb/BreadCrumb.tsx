@@ -15,8 +15,6 @@ function BreadCrumb() {
     const splitPathName = () => {
         const result = paths.split('/').filter(path => path);
         const pathRes = [...result, '/']
-        console.log(pathRes);
-
         const breadcrumbPaths: breadcrumbPath[] = pathRes.map((path) => 
         path === '/' ? ({ href: '/', title: 'خانه' }) :
         path === 'post' ? ({ href: '/post', title: 'پست' }) :
@@ -34,7 +32,7 @@ function BreadCrumb() {
 
 
     return (
-        <div className='bg-gradient'>
+        <div className='bg-gradient mt-9'>
             <div className='container h-full items-center'>
                 <div className='mt-12 flex flex-col justify-center  h-full py-8'>
                     <h1 className='text-4xl font-bold text-white'> وبلاگ</h1>

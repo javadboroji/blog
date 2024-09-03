@@ -1,9 +1,10 @@
 "use server";
+import { NextApiResponse } from "next";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function middleware(request: NextRequest,res: NextApiResponse) {
   if (request.nextUrl.pathname === "/logout") {
     const response = NextResponse.redirect(new URL("/", request.url));
     response.cookies.delete("userLogin");
@@ -14,7 +15,5 @@ export function middleware(request: NextRequest) {
     if(!result ||request===undefined){
       return  NextResponse.redirect(new URL("/", request.url));
     }
-    console.log(result, "*******result******");
   }
-
 }

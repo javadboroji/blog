@@ -8,6 +8,7 @@ import UploadImage from "../../Components/UploadImage";
 import { blogPost } from "@/app/Types";
 import { AddNewPost, singlePost, updatePost } from "@/app/AllApi";
 import { usePathname } from "next/navigation";
+import { ToastContainer } from "react-toastify";
 
 type NewPostFormProps = {
   type: string;
@@ -99,6 +100,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ type }) => {
 
         <UploadImage newPost={newPost} setNewPost={setNewPost} type={type} />
       </Grid>
+      <ToastContainer/>
     </Grid>
   );
 };

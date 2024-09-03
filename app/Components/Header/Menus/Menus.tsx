@@ -100,9 +100,7 @@ function Menus() {
         <li key={i} className="px-4">
           <Link
             href={`/${menu.url}`}
-            className={` ${
-              scrollPosition > 390 ? "text-black" : "text-white"
-            } text-lg`}
+            className={`text-black text-lg`}
           >
             {menu.title}{" "}
           </Link>
