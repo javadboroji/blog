@@ -22,21 +22,19 @@ function PostsGrid() {
     {
       field: "author",
       headerName: "نویسنده ",
-      minWidth: 150,
-      flex: 1,
+      width: 100,
       editable: true,
     },
     {
       field: "date",
       headerName: "تاریخ انتشار",
-      minWidth: 150,
-      flex: 1,
+      width: 120,
       editable: true,
     },
     {
       field: "action",
       headerName: "عملیات",
-      minWidth: 150,
+      width: 100,
       editable: true,
       renderCell: (parmas: any) => {
         return (
@@ -49,9 +47,7 @@ function PostsGrid() {
             <Button onClick={() => editPost(parmas.row)}>
               <FaPenToSquare size={18} />
             </Button>
-            <Button>
-              <IoEyeOutline size={18} />
-            </Button>
+    
           </Box>
         );
       },
