@@ -2,7 +2,6 @@ import connectMongoDB from "@/app/Libs/Mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Products from "@/app/Moudles/EcceomerceProducts";
-import { v2 as cloudinary } from 'cloudinary';
 import { write, writeFile, writeFileSync } from "fs";
 export async function POST(req: NextRequest) {
     const data = await req.formData();

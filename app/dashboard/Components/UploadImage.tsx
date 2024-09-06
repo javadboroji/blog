@@ -26,12 +26,12 @@ const UploadImage: React.FC<newPostStateProps> = ({
   useEffect(() => {
     if (type === "edit") {
       setImagePreview(newPost.src);
-     /// setNewPost((prev) => ({ ...prev, src: null }));
+      /// setNewPost((prev) => ({ ...prev, src: null }));
     }
   }, [type]);
 
   return (
-    <div className="flex justify-center relative items-center my-8 overflow-hidden h-[25rem] border-2 border-blue-300 rounded-lg">
+    <div className="flex justify-center relative items-center my-8 overflow-hidden h-[16rem] border-2 border-blue-300 rounded-lg">
       {imagePreview ? (
         <>
           <Image

@@ -91,6 +91,34 @@ function PostsGrid() {
         pageSizeOptions={[8]}
         hideFooterSelectedRowCount
         disableColumnMenu
+        sx={{
+          border: 0,
+          "& .default-row": {
+            backgroundColor: "#8ADAB2",
+          },
+          "& .muirtl-yrdy0g-MuiDataGrid-columnHeaderRow": {
+            background: "#14213d !important",
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            width: "max-content",
+            lineHeight: "60px !important",
+            position: "sticky",
+            zIndex: "1000",
+            color: "white",
+          },
+          "& .MuiDataGrid-virtualScroller ": {
+            overflow: "hidden",
+            marginTop: "0 !important",
+          },
+          "& .MuiDataGrid-main": {
+            overflow: "visible",
+          },
+
+          "& .MuiDataGrid-cell ": {
+            borderBottom: "0px",
+            fontSize: "12px",
+          },
+        }}
       />
     </Box>
   );

@@ -74,8 +74,8 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ type }) => {
           type="button"
           variant="contained"
           sx={{
-            margin: 2,
-            fontSize: "1.2rem",
+            margin:"2rem auto",
+            fontSize: "1rem",
             padding: "0.5rem 3rem",
             backgroundColor: "#0a9396",
           }}

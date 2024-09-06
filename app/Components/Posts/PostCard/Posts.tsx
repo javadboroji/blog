@@ -5,16 +5,6 @@ import PostCard from './PostCard';
 import { Grid } from '@mui/material';
 import { getAllPosts } from '@/app/AllApi';
 
-const GetAllPosts = async () => {
-    const apiUrl = 'http://localhost:3000/api/getPost';
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
 const Posts = () => {
 
     const [data, setData] = useState<blogPost[]>([])

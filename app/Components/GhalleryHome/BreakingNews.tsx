@@ -18,6 +18,7 @@ function BreakingNews() {
       {news.map((item, i) => {
         return (
           <span
+            key={`news-${i}`}
             className={`text-white px-2 transition ease-linear delay-150  ${
               i === activeNews ? "translate-y-0 " : "-translate-y-[100px]"
             }`}

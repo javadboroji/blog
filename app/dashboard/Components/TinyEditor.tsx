@@ -6,7 +6,7 @@ import { Box, TextField } from "@mui/material";
 import { newPostStateProps } from "@/app/Types";
 
 const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
-  const editorRef = useRef(null);
+  const editorRef = useRef<any>(null);
 
   const changeContentValue = (content: string) => {
     setNewPost((prev) => ({ ...prev, description: content }));
@@ -29,7 +29,11 @@ const TinyEditor: React.FC<newPostStateProps> = ({ setNewPost, newPost }) => {
 
       <Editor
         apiKey="wsntphmr8e2ki1sfhg8mr9pojwmpng64egw5t57af1uk4jdc"
-        onInit={(_evt, editor) => (editorRef.current = editor)}
+        onInit={(_evt, editor) => {
+          if(editorRef.current  ){
+            editorRef.current = editor
+          }
+        }}
         value={newPost?.description}
         onChange={(event) => changeContentValue(event.target.getContent())}
         init={{

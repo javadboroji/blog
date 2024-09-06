@@ -15,7 +15,7 @@ export  async function GET(){
             posts:postsData
         })
     }
-    catch(error){
-        return NextResponse.json({code:500, message:error})
+    catch(error:any){
+        return NextResponse.json({code:500, message:error.message})
     }
 }

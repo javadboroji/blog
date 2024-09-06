@@ -3,10 +3,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginApi, UserLogin } from "./Types";
 import { useIsLogin } from "./sotre/publicStore";
+interface ApiConfig {
+  NEXT_PUBLIC_BASE_URL: string;
+}
+
 const AddNewPost = async (body: FormData) => {
   try {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/AddPost`;
     await axios
-      .post(`http://localhost:3000/api/AddPost`, body, {
+      .post(url, body, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -40,8 +45,10 @@ const AddNewPost = async (body: FormData) => {
 };
 const updatePost = async (body: FormData) => {
   try {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/updatePost`;
+
     await axios
-      .put(`http://localhost:3000/api/updatePost`, body, {
+      .put(url, body, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -75,7 +82,8 @@ const updatePost = async (body: FormData) => {
 };
 const getAllPosts = async () => {
   try {
-    const res = await axios.get(`http://localhost:3000/api/getPost`);
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/getPost`;
+    const res = await axios.get(url);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -86,11 +94,11 @@ const getAllPosts = async () => {
 const singlePost = async (id: string, type?: string) => {
   const body = type === "edit" ? { id: id } : id;
   try {
-    const result = await axios.post(
-      `http://localhost:3000/api/getSinglePost`,
-      body,
-      { headers: { "Content-Type": "application/json" } }
-    );
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSinglePost`;
+
+    const result = await axios.post(url, body, {
+      headers: { "Content-Type": "application/json" },
+    });
     return result.data.post;
   } catch (error) {
     console.log(error);
@@ -100,7 +108,9 @@ const singlePost = async (id: string, type?: string) => {
 
 const loginUser = async (body: LoginApi) => {
   try {
-    const result = await axios.post(`http://localhost:3000/api/login`, body, {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`;
+
+    const result = await axios.post(url, body, {
       headers: { "Content-Type": "application/json" },
     });
     return result.data;
@@ -119,4 +129,4 @@ const loginUser = async (body: LoginApi) => {
     throw error;
   }
 };
-export { AddNewPost,updatePost, getAllPosts, singlePost, loginUser };
+export { AddNewPost, updatePost, getAllPosts, singlePost, loginUser };
